@@ -22,7 +22,7 @@ int check_cycle(listint_t *list)
 	{
 		if (first == second)
 			return (1);
-		first = first->next
+		first = first->next;
 		second = second->next->next;
 	}
 
