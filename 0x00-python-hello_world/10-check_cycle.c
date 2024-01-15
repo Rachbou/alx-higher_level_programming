@@ -18,12 +18,12 @@ int check_cycle(listint_t *list)
 	first = list->next;
 	second = list->next->next;
 
-	while (second && second->next)
+	while (first && second && second->next)
 	{
 		if (first == second)
 			return (1);
-
-		second = second->next;
+		first = first->next
+		second = second->next->next;
 	}
 
 	return (0);
