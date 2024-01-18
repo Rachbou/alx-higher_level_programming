@@ -10,7 +10,7 @@ if __name__ == "__main__":
     a = int(sys.argv[1])
     op = sys.argv[2]
     b = int(sys.argv[3])
-    if op in ops.keys():
+    if op in operators.keys():
         print("{:d} {:s} {:d} = {:d}".format(a, op, b, operators[op](a, b)))
     else:
         print("Unknown operator. Available operators: +, -, * and /")
