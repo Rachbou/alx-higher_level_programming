@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Python.h"
+#include <Python.h>
 
 /**
  * print_python_list_info - Prints some basic info about Python lists.
@@ -11,7 +11,7 @@ void print_python_list_info(PyObject *p)
 {
 	int size, alloc, i;
 	PyListObject *pp;
-	str PyObjName;
+	PyObject *PyObj;
 
 	pp = (PyListObject *)p;
 	size = pp->ob_base.ob_size;
@@ -21,7 +21,7 @@ void print_python_list_info(PyObject *p)
 	printf("[*] Allocated = %d\n", alloc);
 	for (i = 0; i < size; i++)
 	{
-		PyObjName = pp->ob_item[i]->ob_type->tp_name;
-		printf("Element %d: %s\n", i, PyObjName);
+		PyObj = PyList_GetItem(p, i);
+		printf("Element %d: %s\n", i, Py_TYPE(PyObj)->tp_name);
 	}
 }
