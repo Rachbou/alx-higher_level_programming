@@ -1,8 +1,4 @@
 #!/usr/bin/python3
 class Square():
-    """
-    an empty class Square that defines a square
-    """
-
-    def __init__(self):
-        pass
+    """an empty class Square that defines a square"""
+    pass
