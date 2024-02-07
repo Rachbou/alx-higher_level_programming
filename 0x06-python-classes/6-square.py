@@ -43,14 +43,15 @@ class Square:
         """property setter def position(self, value): to set position
         with position must be a tuple of 2 positive integers
         """
+        message = "position must be a tuple of 2 positive integers"
         if len(position) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError(message)
         elif isinstance(position[0], int) and isinstance(position[1], int):
             if position[0] < 0 or position[1] < 0:
-                raise TypeError("position must be a tuple of 2 positive integers")
+                raise TypeError(message)
             self.__position = position
         else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError(message)
 
     def area(self):
         """Public instance method: def area(self):
