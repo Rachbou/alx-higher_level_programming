@@ -37,24 +37,24 @@ class Square:
 
     def __eq__(self, OtherSquare):
         """Define the == comparision."""
-        return self.area() == OtherSquare.area()
+        return (self.area() == OtherSquare.area())
 
     def __ne__(self, OtherSquare):
         """Define the != comparison."""
-        return self.area() != OtherSquare.area()
+        return (self.area() != OtherSquare.area())
 
     def __lt__(self, OtherSquare):
         """Define the < comparison."""
-        return self.area() < OtherSquare.area()
+        return (self.area() < OtherSquare.area())
 
     def __le__(self, OtherSquare):
         """Define the <= comparison."""
-        return self.area() <= OtherSquare.area()
+        return (self.area() <= OtherSquare.area())
 
     def __gt__(self, OtherSquare):
         """Define the > comparison."""
-        return self.area() > OtherSquare.area()
+        return (self.area() > OtherSquare.area())
 
     def __ge__(self, OtherSquare):
         """Define the >= compmarison."""
-        return self.area() >= OtherSquare.area()
+        return (self.area() >= OtherSquare.area())
