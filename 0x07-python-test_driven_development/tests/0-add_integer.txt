@@ -6,6 +6,8 @@
 This library is very simple, since it only has one function
 called add_integer().
 
+    >>> add_integer = __import__('0-add_integer').add_integer
+
 Numbers
 =======
 
@@ -51,19 +53,16 @@ integers or floats, and casts them into integers if they are floats.
 
     >>> add_integer(5, 'a')
     Traceback (most recent call last):
-		...
-	TypeError: b must be an integer
+    TypeError: b must be an integer
 
 ::
 
     >>> add_integer('School')
     Traceback (most recent call last):
-		...
-	TypeError: b must be an integer
+    TypeError: a must be an integer
 
 ::
 
     >>> add_integer(float('Nan'), 0)
     Traceback (most recent call last):
-		...
-	ValueError: cannot convert float NaN to integer
+    ValueError: cannot convert float NaN to integer
