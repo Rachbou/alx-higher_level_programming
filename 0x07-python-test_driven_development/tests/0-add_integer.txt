@@ -1,0 +1,69 @@
+# 0-add_integer.txt
+===============================
+ How to Use 0-add_integer.py
+===============================
+
+This library is very simple, since it only has one function
+called add_integer().
+
+Numbers
+=======
+
+add_integer() returns the sum of its two integer arguments.
+
+::
+
+    >>> add_integer(2, 3)
+    5
+
+::
+
+    >>> add_integer(100, -53)
+    47
+
+the second argument is optional and its default value is 98.
+
+::
+
+    >>> add_integer(0)
+    98
+
+It also works with floating-point values.
+
+::
+
+    >>> add_integer(2.0, 3)
+    5
+
+::
+
+    >>> add_integer(100.5, -53)
+    47
+
+
+Non-Numbers
+===========
+
+Since add_integer() takes two arguments a and b that must be
+integers or floats, and casts them into integers if they are floats.
+
+::
+
+    >>> add_integer(5, 'a')
+    Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+::
+
+    >>> add_integer('School')
+    Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+::
+
+    >>> add_integer(float('Nan'), 0)
+    Traceback (most recent call last):
+		...
+	ValueError: cannot convert float NaN to integer
