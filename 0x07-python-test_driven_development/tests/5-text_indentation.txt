@@ -1,0 +1,72 @@
+# 5-text_indentation.txt
+===============================
+ How to Use 5-text_indentation.py
+===============================
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Strings
+=======
+
+::
+
+	>>> text_indentation("This is the . test.")
+	This is the .
+	<BLANKLINE>
+	test.
+	<BLANKLINE>
+
+::
+
+	>>> text_indentation("This is the : test.")
+	This is the :
+	<BLANKLINE>
+	test.
+	<BLANKLINE>
+
+::
+
+	>>> text_indentation("This is the ? test.")
+	This is the ?
+	<BLANKLINE>
+	test.
+	<BLANKLINE>
+
+::
+
+	>>> text_indentation("This is: the combined test. isn't it cool ? Iknow it.")
+	This is:
+	<BLANKLINE>
+	the combined test.
+	<BLANKLINE>
+	isn't it cool ?
+	<BLANKLINE>
+	Iknow it.
+	<BLANKLINE>
+
+Non-Strings
+===========
+
+::
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+::
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+::
+
+	>>> text_indentation(10)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+::
+
+	>>> text_indentation(["This is a test."])
+	Traceback (most recent call last):
+	TypeError: text must be a string
