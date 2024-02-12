@@ -104,20 +104,20 @@ def recursive_solve(board, row, queens, solutions):
     return (solutions)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N")
-        sys.exit(1)
 
-    N = sys.argv[1]
-    if not isinstance(N, int):
-        print("N must be a number")
-        sys.exit(1)
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
+if len(sys.argv) != 2:
+    print("Usage: nqueens N")
+    sys.exit(1)
 
-    board = initiate_board(N)
-    solutions = recursive_solve(board, 0, 0, [])
-    for solution in solutions:
-        print(solution)
+N = sys.argv[1]
+if not isinstance(N, int):
+    print("N must be a number")
+    sys.exit(1)
+if N < 4:
+    print("N must be at least 4")
+    sys.exit(1)
+
+board = initiate_board(N)
+solutions = recursive_solve(board, 0, 0, [])
+for solution in solutions:
+    print(solution)
