@@ -65,8 +65,9 @@ class Rectangle:
         """
         if self.area == 0:
             return (0)
-        result = 2 * (self.width + self.height)
-        return (result)
+        else:
+            result = 2 * (self.width + self.height)
+            return (result)
 
     def __str__(self):
         """Define the print() representation of a Rectangle."""
@@ -74,18 +75,19 @@ class Rectangle:
         RectangleStr = []
         if self.area == 0:
             return ('')
-        for i in range(1, self.height + 1):
-            for j in range(self.width):
-                RectangleStr.append('#')
-            if i < self.height:
-                RectangleStr.append('\n')
-        return (''.join(RectangleStr))
+        else:
+            for i in range(1, self.height + 1):
+                for j in range(self.width):
+                    RectangleStr.append('#')
+                if i < self.height:
+                    RectangleStr.append('\n')
+            return (''.join(RectangleStr))
 
     def __repr__(self):
         """Define the string representation of the rectangle
         to be able to recreate a new instance by using eval()
         """
-        return('Rectangle({:d}, {:d})'.format(self.width, self.height))
+        return ('Rectangle({:d}, {:d})'.format(self.width, self.height))
 
     def __del__(self):
         """Prints the message Bye rectangle...

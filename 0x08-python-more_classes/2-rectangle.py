@@ -60,7 +60,8 @@ class Rectangle:
         """Public instance method that
         returns the rectangle perimeter
         """
-        if self.area == 0:
+        if self.area != 0:
             return (0)
-        result = 2 * (self.width + self.height)
-        return (result)
+        else:
+            result = 2 * (self.width + self.height)
+            return (result)
