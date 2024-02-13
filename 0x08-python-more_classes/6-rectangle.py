@@ -63,7 +63,7 @@ class Rectangle:
         """Public instance method that
         returns the rectangle perimeter
         """
-        if self.area == 0:
+        if self.width == 0 or self.height == 0:
             return (0)
         else:
             result = 2 * (self.width + self.height)
@@ -73,7 +73,7 @@ class Rectangle:
         """Define the print() representation of a Rectangle."""
 
         RectangleStr = []
-        if self.area == 0:
+        if self.width == 0 or self.height == 0:
             return ('')
         else:
             for i in range(1, self.height + 1):
