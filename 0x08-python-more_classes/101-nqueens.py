@@ -108,7 +108,7 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    
+
     try:
         N = int(sys.argv[1])
     except Exception:
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
-    
+
     board = initiate_board(N)
     solutions = recursive_solve(board, 0, 0, [])
     for solution in solutions:
