@@ -17,11 +17,15 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     characters = ['.', '?', ':']
+    text = text.strip()
+    start = True
     for idx in range(len(text)):
         if text[idx] in characters:
             print(text[idx])
             print()
-        elif text[idx] == ' ' and text[idx - 1] in characters:
+            start = True
+        elif text[idx] == ' ' and start == True:
             pass
         else:
             print(text[idx], end='')
+            start = False
