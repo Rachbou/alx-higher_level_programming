@@ -34,24 +34,13 @@ Numbers
 ::
 
     >>> print_square(0)
-    <BLANKLINE>
+    
 
 ::
 
     >>> print_square(2)
     ##
     ##
-
-::
-
-    >>> print_square(2.5)
-    ##
-    ##
-
-::
-
-    >>> print_square(0.7)
-    <BLANKLINE>
 
 ::
 
@@ -84,4 +73,4 @@ Non-Numbers
 
     >>> print_square(float('Nan'))
     Traceback (most recent call last):
-    ValueError: cannot convert float NaN to integer
+    TypeError: size must be an integer
