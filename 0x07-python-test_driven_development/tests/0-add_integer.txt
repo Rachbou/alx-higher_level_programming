@@ -66,3 +66,9 @@ integers or floats, and casts them into integers if they are floats.
     >>> add_integer(float('Nan'), 0)
     Traceback (most recent call last):
     ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(0, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
