@@ -48,11 +48,14 @@ Strings
 
 	>>> text_indentation("          ")
 
-
 ::
 
 	>>> text_indentation("")
-	
+
+::
+
+	>>> text_indentation("\n\n\n\n\n\n\n\n\n")
+
 
 Non-Strings
 ===========
