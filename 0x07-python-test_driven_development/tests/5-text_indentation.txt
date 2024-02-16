@@ -44,6 +44,10 @@ Strings
 	Iknow it.
 	<BLANKLINE>
 
+::
+
+	>>> text_indentation("          ")
+
 
 ::
 
