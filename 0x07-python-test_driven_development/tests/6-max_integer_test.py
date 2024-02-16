@@ -17,8 +17,8 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_one_element_list(self):
         """Test a list with a single element."""
-        test_list = [0]
-        self.assertEqual(max_integer(test_list), 0)
+        test_list = [10]
+        self.assertEqual(max_integer(test_list), 10)
 
     def test_ascending_sortered_list(self):
         """Tests an ascending sortered list of integers."""
