@@ -3,7 +3,7 @@
 # Rachid BOULMANI
 """
 Function that test if an object is an instance of a class that inherited
-(directly or indirectly) from a specified class
+(directly or indirectly) a specified class
 """
 
 
@@ -11,7 +11,7 @@ def inherits_from(obj, a_class):
     """
     a function that returns:
         True: if the object is an instance of a class that inherited
-        (directly or indirectly) from the specified class
+        (directly or indirectly) the specified class
         False: otherwise.
     """
 
