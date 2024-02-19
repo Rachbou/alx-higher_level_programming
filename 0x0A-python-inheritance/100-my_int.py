@@ -16,7 +16,7 @@ class MyInt(int):
         """
         defining == as !=
         """
-        
+
         if self.real == OtherInt:
             return (False)
         return (True)
@@ -25,7 +25,7 @@ class MyInt(int):
         """
         defining != as ==
         """
-        
+
         if self.real == OtherInt:
             return (True)
         return (False)
