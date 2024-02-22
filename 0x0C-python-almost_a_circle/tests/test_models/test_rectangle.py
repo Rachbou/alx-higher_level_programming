@@ -481,5 +481,39 @@ class TestRectangleY(unittest.TestCase):
             Rectangle(1, 1, 0, -1)
 
 
+class TestRectangleInitializationOrder(unittest.TestCase):
+    """Unittests for testing Rectangle order of attribute initialization."""
+
+    def test_width_before_height(self):
+        """Tests width before height"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", "invalid height")
+
+    def test_width_before_x(self):
+        """Tests width before x"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", 1, "invalid x")
+
+    def test_width_before_y(self):
+        """Tests width before y"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", 1, 0, "invalid y")
+
+    def test_height_before_x(self):
+        """Tests height before x"""
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(1, "invalid height", "invalid x")
+
+    def test_height_before_y(self):
+        """Tests height before y"""
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(1, "invalid height", 0, "invalid y")
+
+    def test_x_before_y(self):
+        """Tests x before y"""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 1, "invalid x", "invalid y")
+
+
 if __name__ == "__main__":
     unittest.main()
