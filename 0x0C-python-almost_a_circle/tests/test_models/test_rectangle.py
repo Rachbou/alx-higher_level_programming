@@ -515,5 +515,31 @@ class TestRectangleInitializationOrder(unittest.TestCase):
             Rectangle(1, 1, "invalid x", "invalid y")
 
 
+class TestRectangleArea(unittest.TestCase):
+    """Unittests for testing the area method of the Rectangle class."""
+
+    def test_area_small(self):
+        """Tests the area of a rectangle with small dimentions"""
+        r = Rectangle(5, 6, 0, 0)
+        self.assertEqual(30, r.area())
+
+    def test_area_large(self):
+        """Tests the area of a rectangle with big dimentions"""
+        r = Rectangle(999999999999999995, 999999999999999996, 0, 0, 1)
+        self.assertEqual(999999999999999991000000000000000020, r.area())
+
+    def test_area_changed_attributes(self):
+        """Tests the area of a rectangle after dimentions change"""
+        r = Rectangle(5, 6, 0, 0)
+        r.width = 3
+        r.height = 12
+        self.assertEqual(36, r.area())
+
+    def test_area_with_arg(self):
+        r = Rectangle(5, 6, 0, 0)
+        with self.assertRaises(TypeError):
+            r.area(30)
+
+
 if __name__ == "__main__":
     unittest.main()
