@@ -580,5 +580,56 @@ class TestRectangleDisplay(unittest.TestCase):
             r.display(0)
 
 
+class TestRectangleStr(unittest.TestCase):
+    """Unittests for testing the string method of Rectangle class."""
+
+    @staticmethod
+    def capture_stdout(rectangle):
+        """Captures and returns text printed to stdout."""
+        capture = io.StringIO()
+        sys.stdout = capture
+        print(rectangle)
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_str_width_height(self):
+        """Tests __str__ with width and height"""
+        r = Rectangle(4, 3)
+        capture = TestRectangleStr.capture_stdout(r)
+        text = "[Rectangle] ({}) 0/0 - 4/3\n".format(r.id)
+        self.assertEqual(text, capture.getvalue())
+
+    def test_str_width_height_x(self):
+        """Tests __str__ with width, height and x"""
+        r = Rectangle(4, 3, 2)
+        capture = TestRectangleStr.capture_stdout(r)
+        text = "[Rectangle] ({}) 2/0 - 4/3\n".format(r.id)
+        self.assertEqual(text, capture.getvalue())
+
+    def test_str_width_height_x_y(self):
+        """Tests __str__ with width, height x, and y"""
+        r = Rectangle(4, 3, 2, 1)
+        capture = TestRectangleStr.capture_stdout(r)
+        text = "[Rectangle] ({}) 2/1 - 4/3\n".format(r.id)
+        self.assertEqual(text, capture.getvalue())
+
+    def test_str_method_changed_attributes(self):
+        """Tests __str__ after attributes update"""
+        r = Rectangle(4, 3, 2, 1)
+        r.width = 11
+        r.height = 12
+        r.x = 13
+        r.y = 14
+        capture = TestRectangleStr.capture_stdout(r)
+        text = "[Rectangle] ({}) 13/14 - 11/12\n".format(r.id)
+        self.assertEqual(text, capture.getvalue())
+
+    def test_str_with_arg(self):
+        """Tests __str__ with arguments"""
+        r = Rectangle(4, 3, 2, 1)
+        with self.assertRaises(TypeError):
+            r.__str__(0)
+
+
 if __name__ == "__main__":
     unittest.main()
