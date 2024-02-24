@@ -565,13 +565,22 @@ class TestRectangleDisplay(unittest.TestCase):
         """Tests display with width, height and x"""
         r = Rectangle(4, 3, 2)
         capture = TestRectangleDisplay.capture_stdout(r)
-        self.assertEqual("####\n####\n####\n", capture.getvalue())
+        self.assertEqual("  ####\n  ####\n  ####\n",
+                         capture.getvalue())
+
+    def test_display_width_height_y(self):
+        """Tests display with width, height and y"""
+        r = Rectangle(4, 3, 0, 1)
+        capture = TestRectangleDisplay.capture_stdout(r)
+        self.assertEqual("\n####\n####\n####\n",
+                         capture.getvalue())
 
     def test_display_width_height_x_y(self):
         """Tests display with width, height x, and y"""
         r = Rectangle(4, 3, 2, 1)
         capture = TestRectangleDisplay.capture_stdout(r)
-        self.assertEqual("####\n####\n####\n", capture.getvalue())
+        self.assertEqual("\n  ####\n  ####\n  ####\n",
+                         capture.getvalue())
 
     def test_display_with_arg(self):
         """Tests display with arguments"""
