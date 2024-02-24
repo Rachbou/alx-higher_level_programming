@@ -640,5 +640,169 @@ class TestRectangleStr(unittest.TestCase):
             r.__str__(0)
 
 
+class TestRectangleUpdate(unittest.TestCase):
+    """Unittests for testing update args method of the Rectangle class."""
+
+    # Test args
+    def test_update_args_zero(self):
+        """Tests Update with no arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update()
+        self.assertEqual("[Rectangle] (10) 10/10 - 10/10", str(r))
+
+    def test_update_args_one(self):
+        """Tests Update with one argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99)
+        self.assertEqual("[Rectangle] (99) 10/10 - 10/10", str(r))
+
+    def test_update_args_two(self):
+        """Tests Update with two arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1)
+        self.assertEqual("[Rectangle] (99) 10/10 - 1/10", str(r))
+
+    def test_update_args_three(self):
+        """Tests Update with two arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1, 2)
+        self.assertEqual("[Rectangle] (99) 10/10 - 1/2", str(r))
+
+    def test_update_args_four(self):
+        """Tests Update with two arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1, 2, 3)
+        self.assertEqual("[Rectangle] (99) 3/10 - 1/2", str(r))
+
+    def test_update_args_five(self):
+        """Tests Update with all arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1, 2, 3, 4)
+        self.assertEqual("[Rectangle] (99) 3/4 - 1/2", str(r))
+
+    def test_update_args_more_than_five(self):
+        """Tests Update with more arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1, 2, 3, 4, 5, 6)
+        self.assertEqual("[Rectangle] (99) 3/4 - 1/2", str(r))
+
+    def test_update_args_None_id(self):
+        """Tests Update with id = None"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(None)
+        correct = "[Rectangle] ({}) 10/10 - 10/10".format(r.id)
+        self.assertEqual(correct, str(r))
+
+    def test_update_args_None_id_and_more(self):
+        """Tests Update with all arguments and id = None"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(None, 1, 2, 3, 4)
+        correct = "[Rectangle] ({}) 3/4 - 1/2".format(r.id)
+        self.assertEqual(correct, str(r))
+
+    def test_update_args_twice(self):
+        """Tests Update twice"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(99, 1, 2, 3, 4)
+        r.update(1, 2, 3, 4, 99)
+        self.assertEqual("[Rectangle] (1) 4/99 - 2/3", str(r))
+
+    def test_update_args_invalid_width_type(self):
+        """Tests Update with invalide width argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(99, "string")
+
+    def test_update_args_width_zero(self):
+        """Tests Update with invalide width argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(99, 0)
+
+    def test_update_args_width_negative(self):
+        """Tests Update with invalide width argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(99, -1)
+
+    def test_update_args_invalid_height_type(self):
+        """Tests Update with invalide height argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(99, 1, "string")
+
+    def test_update_args_height_zero(self):
+        """Tests Update with invalide height argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(99, 1, 0)
+
+    def test_update_args_height_negative(self):
+        """Tests Update with invalide height argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(99, 1, -2)
+
+    def test_update_args_invalid_x_type(self):
+        """Tests Update with invalide x argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(99, 1, 2, "string")
+
+    def test_update_args_x_negative(self):
+        """Tests Update with invalide x argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r.update(99, 1, 2, -3)
+
+    def test_update_args_invalid_y(self):
+        """Tests Update with invalide y argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(99, 1, 2, 3, "string")
+
+    def test_update_args_y_negative(self):
+        """Tests Update with invalide y argument"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r.update(99, 1, 2, 3, -4)
+
+    def test_update_args_width_before_height(self):
+        """Tests Update with invalide width and height arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(99, "string_1", "string_2")
+
+    def test_update_args_width_before_x(self):
+        """Tests Update with invalide width and x arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(99, "string_1", 2, "string_2")
+
+    def test_update_args_width_before_y(self):
+        """Tests Update with invalide width and y arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(99, "string_1", 2, 3, "string_2")
+
+    def test_update_args_height_before_x(self):
+        """Tests Update with invalide height and x arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(99, 1, "string_1", "string_2")
+
+    def test_update_args_height_before_y(self):
+        """Tests Update with invalide height and y arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(99, 1, "string_1", 3, "string_2")
+
+    def test_update_args_x_before_y(self):
+        """Tests Update with invalide x and y arguments"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(99, 1, 2, "string_1", "string_2")
+
+
 if __name__ == "__main__":
     unittest.main()
