@@ -5,6 +5,8 @@
 defines unittests for rectangle.py
 """
 
+import io
+import sys
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -539,6 +541,43 @@ class TestRectangleArea(unittest.TestCase):
         r = Rectangle(5, 6, 0, 0)
         with self.assertRaises(TypeError):
             r.area(30)
+
+
+class TestRectangleDisplay(unittest.TestCase):
+    """Unittests for testing the display method of Rectangle class."""
+
+    @staticmethod
+    def capture_stdout(rectangle):
+        """Captures and returns text printed to stdout."""
+        capture = io.StringIO()
+        sys.stdout = capture
+        rectangle.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_display_width_height(self):
+        """Tests display with width and height"""
+        r = Rectangle(4, 3)
+        capture = TestRectangleDisplay.capture_stdout(r)
+        self.assertEqual("####\n####\n####\n", capture.getvalue())
+
+    def test_display_width_height_x(self):
+        """Tests display with width, height and x"""
+        r = Rectangle(4, 3, 2)
+        capture = TestRectangleDisplay.capture_stdout(r)
+        self.assertEqual("####\n####\n####\n", capture.getvalue())
+
+    def test_display_width_height_x_y(self):
+        """Tests display with width, height x, and y"""
+        r = Rectangle(4, 3, 2, 1)
+        capture = TestRectangleDisplay.capture_stdout(r)
+        self.assertEqual("####\n####\n####\n", capture.getvalue())
+
+    def test_display_with_arg(self):
+        """Tests display with arguments"""
+        r = Rectangle(4, 3, 2, 1)
+        with self.assertRaises(TypeError):
+            r.display(0)
 
 
 if __name__ == "__main__":
