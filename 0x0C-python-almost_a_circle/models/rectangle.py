@@ -113,7 +113,7 @@ class Rectangle(Base):
                                                         self.y, self.width,
                                                         self.height))
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Assigns an argument to each attribute:
             1st argument should be the id attribute
             2nd argument should be the width attribute
@@ -136,3 +136,20 @@ class Rectangle(Base):
                     self.y = args[i]
                 else:
                     break
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.__init__(self.width, self.height,
+                                  self.x, self.y, value)
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+                else:
+                    pass
+        else:
+            pass
