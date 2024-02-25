@@ -933,5 +933,25 @@ class TestRectangleUpdate(unittest.TestCase):
         self.assertEqual("[Rectangle] (99) 12/12 - 10/3", str(r))
 
 
+class TestRectangleToDictionary(unittest.TestCase):
+    """Unittests for testing to_dictionary method of the Rectangle class."""
+
+    def test_to_dictionary_output(self):
+        r = Rectangle(10, 9, 2, 1, 99)
+        correct = {"id": 99, "width": 10, "height": 9, "x": 2, "y": 1}
+        self.assertDictEqual(correct, r.to_dictionary())
+
+    def test_to_dictionary_no_object_changes(self):
+        r1 = Rectangle(10, 9, 2, 1, 99)
+        r2 = Rectangle(1, 2, 3, 4, 99)
+        r2.update(**r1.to_dictionary())
+        self.assertNotEqual(r1, r2)
+
+    def test_to_dictionary_arg(self):
+        r = Rectangle(10, 9, 2, 1, 99)
+        with self.assertRaises(TypeError):
+            r.to_dictionary(1)
+
+
 if __name__ == "__main__":
     unittest.main()
