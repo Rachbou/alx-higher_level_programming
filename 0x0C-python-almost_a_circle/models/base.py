@@ -8,6 +8,7 @@ and to avoid duplicating the same code
 """
 
 import json
+import csv
 
 
 class Base:
@@ -107,5 +108,56 @@ class Base:
                 list_dicts = Base.from_json_string(file.read())
                 return ([cls.create(**dictionary)
                          for dictionary in list_dicts])
+        except IOError:
+            return ([])
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Writes the writes list_objs to a CSV file.
+        Format of the CSV:
+            Rectangle: <id>,<width>,<height>,<x>,<y>
+            Square: <id>,<size>,<x>,<y>
+        """
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, "w", newline="") as file:
+            if list_objs is None or list_objs == []:
+                file.write("[]")
+            else:
+                if cls.__name__ == "Square":
+                    names = ['id', 'size', 'x', 'y']
+                else:
+                    names = ['id', 'width', 'height', 'x', 'y']
+                writer = csv.DictWriter(file, fieldnames=names)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Returns a list of instances:
+            The filename must be: <Class name>.csv - example: Rectangle.csv
+            Format of the CSV:
+                Rectangle: <id>,<width>,<height>,<x>,<y>
+                Square: <id>,<size>,<x>,<y>
+            If the file doesn’t exist:
+                Return an empty list
+            Otherwise:
+                Return a list of instances - the type of these instances
+                depends on cls (current class using this method)
+        """
+        filename = "{}.csv".format(cls.__name__)
+        try:
+            with open(filename, "r", newline="") as file:
+                if cls.__name__ == "Square":
+                    names = ["id", "size", "x", "y"]
+                else:
+                    names = ["id", "width", "height", "x", "y"]
+                list_dicts = csv.DictReader(file, fieldnames=names)
+                list_dictionaries = [dict([k, int(v)]
+                                          for k, v in dictionary.items())
+                                     for dictionary in list_dicts]
+                return ([cls.create(**dictionary)
+                         for dictionary in list_dictionaries])
         except IOError:
             return ([])
