@@ -432,5 +432,25 @@ class TestSquareUpdate(unittest.TestCase):
         self.assertEqual("[Square] (99) 12/12 - 3", str(s))
 
 
+class TestSquareToDictionary(unittest.TestCase):
+    """Unittests for testing to_dictionary method of the Square class."""
+
+    def test_to_dictionary_output(self):
+        s = Square(10, 2, 1, 99)
+        correct = {"id": 99, "size": 10, "x": 2, "y": 1}
+        self.assertDictEqual(correct, s.to_dictionary())
+
+    def test_to_dictionary_no_object_changes(self):
+        s1 = Square(10, 2, 1, 99)
+        s2 = Square(1, 2, 3, 99)
+        s2.update(**s1.to_dictionary())
+        self.assertNotEqual(s1, s2)
+
+    def test_to_dictionary_arg(self):
+        s = Square(10, 2, 1, 99)
+        with self.assertRaises(TypeError):
+            s.to_dictionary(1)
+
+
 if __name__ == "__main__":
     unittest.main()
