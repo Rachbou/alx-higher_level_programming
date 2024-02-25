@@ -7,6 +7,8 @@ The goal of it is to manage id attribute in all the future classes
 and to avoid duplicating the same code
 """
 
+import json
+
 
 class Base:
     """
@@ -32,3 +34,18 @@ class Base:
             self.id = Base.__nb_objects
         else:
             self.id = id
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        returns the JSON string representation of list_dictionaries:
+            list_dictionaries is a list of dictionaries
+            If list_dictionaries is None or empty:
+                Returns the string: "[]"
+            Otherwise:
+                Returns the JSON string representation of list_dictionaries
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return ("[]")
+        else:
+            return (json.dumps(list_dictionaries))
