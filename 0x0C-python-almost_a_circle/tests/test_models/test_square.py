@@ -110,5 +110,99 @@ class TestSquareStr(unittest.TestCase):
             s.__str__(0)
 
 
+class TestSquareSize(unittest.TestCase):
+    """Unittests for testing the size attribute."""
+
+    def test_None_size(self):
+        """Tests size attribute with None"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(None)
+
+    def test_str_size(self):
+        """Tests size attribute with a string"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("invalid")
+
+    def test_float_size(self):
+        """Tests size attribute with a float"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(1.1)
+
+    def test_complex_size(self):
+        """Tests size attribute with a complex"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(complex(1))
+
+    def test_dict_size(self):
+        """Tests size attribute with a dictionary"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square({"a": 1, "b": 1})
+
+    def test_bool_size(self):
+        """Tests size attribute with a boolean"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(True)
+
+    def test_list_size(self):
+        """Tests size attribute with a list"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square([1, 2, 3])
+
+    def test_set_size(self):
+        """Tests size attribute with a set"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square({1, 2, 3})
+
+    def test_tuple_size(self):
+        """Tests size attribute with a tuple"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square((1, 2, 3))
+
+    def test_frozenset_size(self):
+        """Tests size attribute with a frozen set"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(frozenset({1, 2, 3, 2, 1}))
+
+    def test_range_size(self):
+        """Tests size attribute with a range"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(range(1))
+
+    def test_bytes_size(self):
+        """Tests size attribute with bytes"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(b'Python')
+
+    def test_bytearray_size(self):
+        """Tests size attribute with a byte array"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(bytearray(b'Python'))
+
+    def test_memoryview_size(self):
+        """Tests size attribute with a memory view"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(memoryview(b'Python'))
+
+    def test_inf_size(self):
+        """Tests size attribute with Inf"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(float('inf'))
+
+    def test_nan_size(self):
+        """Tests size attribute with NaN"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(float('nan'))
+
+    def test_negative_size(self):
+        """Tests size attribute with a negative value"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1)
+
+    def test_zero_size(self):
+        """Tests size attribute with 0"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0)
+
+
 if __name__ == "__main__":
     unittest.main()

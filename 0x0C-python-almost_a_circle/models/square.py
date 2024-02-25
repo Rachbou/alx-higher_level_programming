@@ -28,3 +28,14 @@ class Square(Rectangle):
         """string representation of a Square"""
         return ("[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
                                                   self.width))
+
+    @property
+    def size(self):
+        """size's getter"""
+        return (self.width)
+
+    @size.setter
+    def size(self, size):
+        """size's setter"""
+        self.width = size
+        self.height = size
