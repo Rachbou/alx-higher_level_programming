@@ -88,7 +88,10 @@ class Base:
             **dictionary can be thought of as a double pointer to a dictionary
         """
         if dictionary and len(dictionary) != 0:
-            NewCls = cls(1, 1)
+            if cls.__name__ == "Square":
+                NewCls = cls(1)
+            else:
+                NewCls = cls(1, 1)
             NewCls.update(**dictionary)
             return (NewCls)
 
