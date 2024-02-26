@@ -49,12 +49,12 @@ class Rectangle(Base):
     @property
     def x(self):
         """x's getter"""
-        return(self.__x)
+        return (self.__x)
 
     @property
     def y(self):
         """y's getter"""
-        return(self.__y)
+        return (self.__y)
 
     @width.setter
     def width(self, width):
